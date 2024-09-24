@@ -6,6 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/milk_chocolate">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="46sp"
+        android:text="Регистрация"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:textColor="@color/apricot"/>
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Логин"
+        android:textSize="26sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:textColor="@color/apricot"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Пароль"
+        android:textSize="26dp"
+        android:layout_gravity="center"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/apricot"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Зарегистрироваться"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/milk_chocolate"
+        android:background="@drawable/button_shape"/>
 
 </LinearLayout>
