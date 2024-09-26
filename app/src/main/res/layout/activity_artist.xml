@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Artist_Activity"
+    android:orientation="vertical"
+    android:background="@color/milk_chocolate">
+
+    <TextView
+        android:textColor="@color/apricot"
+        android:id="@+id/artistNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="450dp">
+        <TextView
+            android:textColor="@color/apricot"
+            android:id="@+id/artistProfileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/artistImageView"
+        android:layout_width="240dp"
+        android:layout_height="175.2dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

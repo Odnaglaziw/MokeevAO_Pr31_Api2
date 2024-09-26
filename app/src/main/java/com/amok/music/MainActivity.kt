@@ -1,5 +1,6 @@
 package com.amok.music
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -29,9 +30,18 @@ class MainActivity : AppCompatActivity() {
         val artistSearchEditText = findViewById<EditText>(R.id.artistSearchEditText)
         val artistRecyclerView = findViewById<RecyclerView>(R.id.artistRecyclerView)
 
+        artistAdapter = ArtistAdapter(artists, object : ArtistAdapter.OnArtistClickListener {
+            override fun onArtistClick(artist: Result) {
+                val intent = Intent(this@MainActivity, Artist_Activity::class.java)
+                intent.putExtra("ARTIST_ID", artist.id)
+                startActivity(intent)
+            }
+        })
+
         artistRecyclerView.layoutManager = LinearLayoutManager(this)
-        artistAdapter = ArtistAdapter(artists)
         artistRecyclerView.adapter = artistAdapter
+
+
 
         artistSearchEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
