@@ -8,12 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
-import org.json.JSONObject
 
 class Artist_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +31,8 @@ class Artist_Activity : AppCompatActivity() {
         val artistImageView = findViewById<ImageView>(R.id.artistImageView)
         val token = "Discogs token=kPnuurvYybLqjJKwWTBKdqDAupZwDXBlBOUUqGXn"
 
-        val request = object : StringRequest(Request.Method.GET, url, { response ->
-            val jsonObject = JSONObject(response)
-            val images = jsonObject.getJSONArray("images")
-            if (images.length() > 0) {
-                val imageUrl = images.getJSONObject(0).getString("uri")
-                Log.d("API Response", "Response: $imageUrl")
-            }
+        val request = object : StringRequest(Method.GET, url, { response ->
+
             val artistDetails = Gson().fromJson(response, ArtistDetails::class.java)
             artistNameTextView.text = artistDetails.name
             artistProfileTextView.text = artistDetails.profile
