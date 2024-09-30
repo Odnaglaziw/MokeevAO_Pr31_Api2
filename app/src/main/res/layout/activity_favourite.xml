@@ -5,31 +5,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
+    tools:context=".Favourite"
     android:background="@color/milk_chocolate">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/artistSearchEditText"
+        <TextView
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Понравившиеся артисты"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:hint="Имя Артиста"
-            android:textColor="@color/apricot"
-            android:textSize="40sp" />
+            android:padding="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/artistRecyclerView"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="240dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"/>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,13 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:foregroundGravity="bottom"
+        android:background="@color/milk_chocolate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@color/milk_chocolate"/>
-
-
-
+        app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

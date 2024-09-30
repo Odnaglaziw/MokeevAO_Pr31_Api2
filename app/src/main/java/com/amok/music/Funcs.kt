@@ -1,6 +1,7 @@
 package com.amok.music
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -26,4 +27,14 @@ fun searchArtist(context: Context, artistName: String, onResponse: (List<Result>
     }
 
     Volley.newRequestQueue(context).add(request)
+}
+
+fun mapToArtist(artistDetails: ArtistDetails): Artist {
+    val imageUrl: String = artistDetails.images.firstOrNull()?.uri ?: ""
+
+    return Artist(
+        id = artistDetails.id,
+        name = artistDetails.name,
+        image = imageUrl
+    )
 }

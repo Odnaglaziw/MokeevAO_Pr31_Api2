@@ -31,11 +31,17 @@ data class Image(
     @SerializedName("height") val height: Int
 )
 
+data class ArtistHelper(
+    @SerializedName("id")val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("uri") val image: String
+)
+
 @Entity(tableName = "artists")
 data class Artist(
     @PrimaryKey(autoGenerate = false) val id: Int,
     val name: String,
-    val image: Image
+    val image: String
 )
 
 @Database(entities = [Artist::class], version = 1)

@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,8 +28,41 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
+
         val artistSearchEditText = findViewById<EditText>(R.id.artistSearchEditText)
         val artistRecyclerView = findViewById<RecyclerView>(R.id.artistRecyclerView)
+
+        val searched = intent.getStringExtra("searched")
+        if (!searched.isNullOrEmpty()){
+            artistSearchEditText.setText(searched)
+            searchArtist(this@MainActivity, searched, { results ->
+                artists.clear()
+                artists.addAll(results)
+                artistAdapter.notifyDataSetChanged()
+            }, { error ->
+                println("Error: ${error.message}")
+            })
+        }
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.selectedItemId = R.id.nav_search
+
+        bottomNav.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_search -> {
+                    true
+                }
+                R.id.nav_favourite -> {
+                    val intent = Intent(this, Favourite::class.java)
+                    intent.putExtra("searched",artistSearchEditText.text.toString())
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
 
         artistAdapter = ArtistAdapter(artists, object : ArtistAdapter.OnArtistClickListener {
             override fun onArtistClick(artist: Result) {
